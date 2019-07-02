@@ -1,0 +1,12 @@
+note over browser:
+start note
+1. Prevent the submit button from submitting the form via preventDefault() call.
+2. Add new 'note' node from the form field to the window DOM node 'notes'
+3. Redraw the form's unordered list based on 'notes' object derived in 2.
+end note
+
+4. Send the newly added 'note' content to server via xhttp object using POST request to send the content to /new_note_spa
+browser --> server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server --> browser: {"message":"note created"}
+end note
+
