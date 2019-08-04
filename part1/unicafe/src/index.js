@@ -11,6 +11,17 @@ const App = () => {
   const handleNeutral = () => (setNeutral(neutral+1))
   const handleBad = () => (setBad(bad+1))
 
+  const getAverage = () => {
+      const wtSum = 1*good + 0*neutral - 1*bad
+      const denom = ((good+neutral+bad)==0)? 1:good+neutral+bad
+      return wtSum/denom
+  }
+  
+
+  const getPositive = () => {
+     const denom = ((good+neutral+bad)==0)? 1:good+neutral+bad
+     return good/denom * 100
+  }
 
   return (
     <div>
@@ -22,6 +33,9 @@ const App = () => {
       <p>good {good}</p>
       <p>neutral {neutral} </p>
       <p>bad {bad}</p>
+      <p>all {good+neutral+bad}</p>
+      <p>average {getAverage()}</p>
+      <p>positive {getPositive()}%</p>
     </div>
   )
 }
