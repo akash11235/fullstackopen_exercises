@@ -1,27 +1,30 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const Statistics = (props) => {
+const Statistics = ({good,neutral,bad}) => {
     
-  const getAverage = (props) => {
-      const wtSum = 1*props.good + 0*props.neutral - 1*props.bad
-      const denom = ((props.good+props.neutral+props.bad)==0)? 1:props.good+props.neutral+props.bad
+  const getAverage = ({good,neutral,bad}) => {
+      const wtSum = 1*good + 0*neutral - 1*bad
+      const denom = ((good+neutral+bad)==0)? 1:good+neutral+bad
       return wtSum/denom
   }
 
-  const getPositive = (props) => {
-     const denom = ((props.good+props.neutral+props.bad)==0)? 1:props.good+props.neutral+props.bad
-     return props.good/denom * 100
+  const getPositive = ({good,neutral,bad}) => {
+     const denom = ((good+neutral+bad)==0)? 1:good+neutral+bad
+     return good/denom * 100
   }
   return (
+      (good===0 && neutral === 0 && bad === 0)?
+      <p>No feed back given </p>
+      :
    <div>
     <h1>statistics</h1>
-    <p>good {props.good}</p>
-    <p>neutral {props.neutral}</p>
-    <p>bad {props.bad}</p>
-    <p>all {props.good+props.neutral+props.bad}</p>
-    <p>average {getAverage(props)}</p>
-    <p>positive {getPositive(props)}%</p>
+    <p>good {good}</p>
+    <p>neutral {neutral}</p>
+    <p>bad {bad}</p>
+    <p>all {good+neutral+bad}</p>
+    <p>average {getAverage({good,neutral,bad})}</p>
+    <p>positive {getPositive({good,neutral,bad})}%</p>
    </div>
   )
 }
