@@ -19,22 +19,25 @@ const Statistics = ({good,neutral,bad}) => {
       :
    <div>
     <h1>statistics</h1>
+    <table>
     <Statistic name="good" value={good}/>
     <Statistic name="neutral" value={neutral}/>
     <Statistic name="bad" value={bad}/>
     <Statistic name="all" value={good+neutral+bad}/>
     <Statistic name="average" value={getAverage({good,neutral,bad})}/>
     <Statistic name="positive" value={getPositive({good,neutral,bad}) + '%'}/>
+    </table>
    </div>
   )
 }
 
 const Statistic = ({name, value}) => {
- return(
- <div>
-   <p>{name} {value}</p>
- </div>
- )
+ return (
+   <tr>
+       <td>{name}</td>
+       <td>{value}</td>
+   </tr>
+ );
 }
 
 const Button = (props) => {
